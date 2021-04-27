@@ -1,14 +1,15 @@
 # Step-by-step installation using scripts
 
 Just follow these steps:
-- [0 - Ubuntu 18.04 fix](#0---ubuntu-1804-fix)
-- [1 - Install tpm2 software and PKCS11](#1---install-tpm2-software-and-pkcs11)
-- [2 - Install and configure an HW or simulated TPM](#2---install-and-configure-a-sw-or-hw-tpm)
-- [3 - Ubuntu fix, pkcs11-tool installation](#2---install-and-configure-an-hw-or-simulated-tpm)
-- [4 - Install IoT Edge 1.2](#4---install-iot-edge-12)
-- [5 - Init the PKCS11 store](#5---init-the-pkcs11-store)
-- [6 - Configure IoT Edge](#6---configure-iot-edge)
-- [That's all folks](#thats-all-folks)
+- [Step-by-step installation using scripts](#step-by-step-installation-using-scripts)
+  - [0 - Ubuntu 18.04 fix](#0---ubuntu-1804-fix)
+  - [1 - Install tpm2 software and PKCS11](#1---install-tpm2-software-and-pkcs11)
+  - [2 - Install and configure a SW or HW TPM](#2---install-and-configure-a-sw-or-hw-tpm)
+  - [3 - pkcs11-tool installation](#3---pkcs11-tool-installation)
+  - [4 - Install IoT Edge 1.2](#4---install-iot-edge-12)
+  - [5 - Init the PKCS11 store](#5---init-the-pkcs11-store)
+  - [6 - Configure IoT Edge](#6---configure-iot-edge)
+  - [That's all folks.](#thats-all-folks)
 
 Bonus:
 - [BONUS: Inspect the PKCS11 store](#bonus-inspect-the-pkcs11-store)
@@ -115,7 +116,46 @@ Just launch the following script:
 
 > **_NOTE:_**  for the time being, this guide covers only username/password EST auth. Working on the EST Identity cert authentication.
 
-That script will create and apply a config.toml based on this [template](./scripts/config.toml.est.template).
+That '6-iot-edge-config.sh' script will create and apply a 'config.toml' based on this [template](./scripts/config.toml.est.template) where the relevant sections are:
+
+* DPS:
+  ```
+  # Provisioning configuration
+  # --------------------------
+  ## DPS provisioning with X.509 certificate
+  [provisioning]
+  source = "dps"
+  global_endpoint = "https://global.azure-devices-provisioning.net"
+  id_scope = "$DPS_SCOPEID"
+
+  [provisioning.attestation]
+  method = "x509"
+  registration_id = "$DEVICE_ID"
+
+  identity_cert = { method = "est", common_name = "$DEVICE_ID" }      # dynamically issued via EST, or...
+  ```
+* EST:
+  ```
+  # Cert issuance via EST
+  # ---------------------
+  [cert_issuance.est]
+  trusted_certs = [
+      "file:///etc/aziot/est-ca.pem",
+  ]
+
+  [cert_issuance.est.auth]
+  username = "$EST_USERNAME"
+  password = "$EST_PASSWORD"
+
+  [cert_issuance.est.urls]
+  default = "$EST_URL"
+  ```
+* PKCS11:
+  ```
+  [aziot_keys]
+  pkcs11_lib_path = "/usr/local/lib/libtpm2_pkcs11.so"
+  pkcs11_base_slot = "pkcs11:token=edge?pin-value=1234"
+  ```
 
 ## That's all folks.
 If everything went fine, you should now have an IoT Edge provisioned via DPS, using an Identity Certificate dynamically issued by a CA via EST, with private keys securely stored in the TPM/PKCS11.

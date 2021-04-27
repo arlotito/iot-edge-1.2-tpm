@@ -27,7 +27,7 @@ Once you have the scripts:
 ## Tested configurations
 This guide has been tested on:
 * x86:
-  * Ubuntu 18.04, both a physical x86 machine and virtual machine, using a [simulated TPM](#2---install-and-configure-a-sw-or-hw-tpm)
+  * Ubuntu 18.04, both a physical x86 machine and virtual machine, using a [simulated TPM](./step-by-step.md#2---install-and-configure-a-sw-or-hw-tpm)
 * ARM:
   * raspberry pi 4 with Raspberry OS 32bit (which is based on Debian 10 Buster)
     * with a [simulated TPM](./step-by-step.md#2---install-and-configure-a-sw-or-hw-tpm)

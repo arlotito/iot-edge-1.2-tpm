@@ -97,4 +97,4 @@ read EST_PASSWORD
 echo
 
 az vm run-command invoke -g ${RG_NAME} -n ${RG_NAME} --command-id RunShellScript \
-    --script "/home/${ADMIN_USERNAME}/iot-edge-1.2-tpm/iot-edge-config-azure.sh '${DEVICE_ID}' '${DPS_SCOPEID}' '${EST_HOSTNAME}' '${EST_USERNAME}' '${EST_PASSWORD}'"
+    --script "/home/${ADMIN_USERNAME}/iot-edge-1.2-tpm/scripts/iot-edge-config-azure.sh '${DEVICE_ID}' '${DPS_SCOPEID}' '${EST_HOSTNAME}' '${EST_USERNAME}' '${EST_PASSWORD}'"

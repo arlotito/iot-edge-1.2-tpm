@@ -39,10 +39,18 @@ export TPM2_PKCS11_STORE='/opt/tpm2-pkcs11'
 export PKCS11_LIB_PATH='/usr/local/lib/libtpm2_pkcs11.so'
 sudo pkcs11-tool --module "$PKCS11_LIB_PATH" -IOT
 ```
-...and make sure you have 'device-id' and 'aziot-edged-ca':
-![picture 4](images/13ad97bcb427bab218d7de1b5de6de09bb6cf001f23746357863ce84b0770e87.png)
-
 > **_NOTE:_**  the 'pkcs11-tool' is installed by script [3-install-pkcs11-tool.sh](./scripts/3-install-pkcs11-tool.sh)
+> 
+...and make sure you have 'device-id' and 'aziot-edged-ca':
+![picture 1](images/dec9f3071483b6ad3aaa5d4b0eea95164cb66bfc7bd3fcfad792adb263c41d71.png)  
+
+
+If you don't see any key or just the 'device-id', try with:
+```bash
+sudo iotedge system reprovision
+```
+
+Look at [this](./troubleshooting.md) for additional troubleshooting.
 
 ## Tested configurations
 This guide has been tested on:

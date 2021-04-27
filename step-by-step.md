@@ -116,7 +116,7 @@ Just launch the following script:
 
 > **_NOTE:_**  for the time being, this guide covers only username/password EST auth. Working on the EST Identity cert authentication.
 
-That '6-iot-edge-config.sh' script will create and apply a 'config.toml' based on this [template](./scripts/config.toml.est.template) where the relevant sections are:
+The '6-iot-edge-config.sh' script will create and apply a 'config.toml' based on this [template](./scripts/config.toml.est.template), where the relevant sections are:
 
 * DPS:
   ```
@@ -156,6 +156,7 @@ That '6-iot-edge-config.sh' script will create and apply a 'config.toml' based o
   pkcs11_lib_path = "/usr/local/lib/libtpm2_pkcs11.so"
   pkcs11_base_slot = "pkcs11:token=edge?pin-value=1234"
   ```
+  > **_NOTE:_**  the token 'edge' with PIN '1234' is created in script [5-pkcs11-init](./scripts/5-pkcs11-init.sh)
 
 ## That's all folks.
 If everything went fine, you should now have an IoT Edge provisioned via DPS, using an Identity Certificate dynamically issued by a CA via EST, with private keys securely stored in the TPM/PKCS11.

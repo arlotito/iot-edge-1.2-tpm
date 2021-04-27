@@ -27,9 +27,9 @@ echo
 
 echo
 echo downloading the EST CA cert from $EST_HOSTNAME
-openssl s_client -showcerts -connect $EST_HOSTNAME </dev/null 2>/dev/null|openssl x509 -outform PEM >./appservice-ca.pem
-sudo cp ./appservice-ca.pem /etc/aziot/
-#rm ./appservice-ca.pem
+openssl s_client -showcerts -connect $EST_HOSTNAME </dev/null 2>/dev/null|openssl x509 -outform PEM >./est-ca.pem
+sudo cp ./est-ca.pem /etc/aziot/
+rm ./est-ca.pem
 
 echo
 echo applying configuration to iot edge...

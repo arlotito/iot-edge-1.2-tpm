@@ -43,11 +43,11 @@ sudo pkcs11-tool --module "$PKCS11_LIB_PATH" -IOT
 ## Tested configurations
 This guide has been tested on:
 * x86:
-  * Ubuntu 18.04, both a physical x86 machine and virtual machine, using a [simulated TPM](#2---install-and-configure-a-sw-or-hw-tpm)
+  * Ubuntu 18.04, both a physical x86 machine and virtual machine, using a [simulated TPM](./step-by-step.md#2---install-and-configure-a-sw-or-hw-tpm)
 * ARM:
   * raspberry pi 4 with Raspberry OS 32bit (which is based on Debian 10 Buster)
-    * with a [simulated TPM](https://github.com/arlotito/iot-edge-1.2-tpm-to-be-removed/blob/auto-configuration/step-by-step.md#2---install-and-configure-a-sw-or-hw-tpm)
-    * with an [HW Infineon Optiga SLB9670 TPM 2.0](https://github.com/arlotito/iot-edge-1.2-tpm-to-be-removed/blob/auto-configuration/step-by-step.md#2---install-and-configure-a-sw-or-hw-tpm)
+    * with a [simulated TPM](./step-by-step.md#2---install-and-configure-a-sw-or-hw-tpm)
+    * with an [HW Infineon Optiga SLB9670 TPM 2.0](./step-by-step.md#2---install-and-configure-a-sw-or-hw-tpm)
 
 ## References  
 

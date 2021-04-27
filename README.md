@@ -3,6 +3,10 @@ This guide explains how to provision an IoT Edge 1.2 via DPS, using an Identity 
 
 All the required components (including a simulated TPM if needed) are installed running few scripts included in this repo.
 
+## Disclaimer  
+
+**Samples in this repo are for demonstration purposes only! This is not a guidance or best practices on IoT Edge security.**  
+
 ## Get started
 
 Install git if you haven't it:

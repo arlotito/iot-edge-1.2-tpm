@@ -150,6 +150,7 @@ The '6-iot-edge-config.sh' script will create and apply a 'config.toml' based on
   [cert_issuance.est.urls]
   default = "$EST_URL"
   ```
+  > **_NOTE:_** the 'est-ca.pem' is downloaded by script [6-iot-edge-config](./scripts/6-iot-edge-config.sh) and moved to the '/etc/aziot' folder   
 * PKCS11:
   ```
   [aziot_keys]

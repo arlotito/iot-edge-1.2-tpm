@@ -25,7 +25,7 @@ Create a keypair:
 ./9-1-create-keypair.sh
 ```
 
-The generated keypair is stored in the PKCS11. View it by [inspecting the content of the PKCS11 store](#bonus-inspect-the-pkcs11-store).
+The generated keypair is stored in the PKCS11. View it by [inspecting the content of the PKCS11 store](#inspect-the-pkcs11-store).
 ## Use openssl with the TPM via PKCS11
 Install and configure a pkcs11 engine for openssl on a x86:
 ```bash

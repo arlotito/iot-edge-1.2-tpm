@@ -11,9 +11,9 @@ Just follow these steps:
   - [6 - Configure IoT Edge](#6---configure-iot-edge)
 
 Bonus:
-- [BONUS: Inspect the PKCS11 store](#bonus-inspect-the-pkcs11-store)
-- [BONUS: using openssl with the TPM via PKCS11](#bonus-using-openssl-with-the-tpm-via-pkcs11)
-- [BONUS: create a keypair](#bonus-create-a-keypair)
+- [BONUS: Inspect the PKCS11 store](./bonus.md#inspect-the-pkcs11-store)
+- [BONUS: using openssl with the TPM via PKCS11](./bonus.md#using-openssl-with-the-tpm-via-pkcs11)
+- [BONUS: create a keypair](./bonus.md#create-a-keypair)
 
 Pre-requisites:
 * an x86/Ubuntu 18.04 physical or virtual machine

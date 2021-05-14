@@ -6,6 +6,9 @@ set -euo pipefail
 
 cd ~/src/tpm2-pkcs11
 
+# needed in case previous steps have been skipped
+sudo apt-get update
+
 # removes /opt/tpm2-pkcs11 if any
 sudo rm -rf /opt/tpm2-pkcs11
 

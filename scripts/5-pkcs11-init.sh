@@ -19,7 +19,7 @@ sudo tpm2_clear
 #initialize the PKCS11 store
 # ------------------
 
-sudo mkdir /opt/tpm2-pkcs11
+sudo mkdir -p /opt/tpm2-pkcs11
 
 # tpm2_ptool requires Python 3 >= 3.7 and expects `python3`
 # to be that version by default.

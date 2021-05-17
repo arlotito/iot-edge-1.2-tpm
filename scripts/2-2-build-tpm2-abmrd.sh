@@ -32,7 +32,7 @@ dbus-send \
 #
 VTPM=/etc/systemd/system/ibmswtpm2.service
 if [ -f "$VTPM" ]; then
-    echo "$FILE exists."
+    echo "$VTPM exists."
     # ------------------
     # configure the tpm2-abmrd
     # ------------------

@@ -31,23 +31,26 @@ dbus-send \
 
 #
 VTPM=/etc/systemd/system/ibmswtpm2.service
-if [ -f "$VTPM" ]; then
-    echo "$VTPM exists."
-    # ------------------
-    # configure the tpm2-abmrd
-    # ------------------
-    sudo mkdir -p /etc/systemd/system/tpm2-abrmd.service.d/
-    sudo tee /etc/systemd/system/tpm2-abrmd.service.d/mssim.conf <<-EOF
-    [Unit]
-    ConditionPathExistsGlob=
-    Requires=ibmswtpm2.service
-    After=ibmswtpm2.service
-
-    [Service]
-    ExecStart=
-    ExecStart=/usr/local/sbin/tpm2-abrmd --tcti=mssim
-    EOF
-
-    sudo systemctl daemon-reload
-    sudo systemctl restart tpm2-abrmd
+if [ ! -f "$VTPM" ]; then
+    echo "$VTPM does not exists. Nothing to do."
+    exit 0
 fi
+
+echo "$VTPM exists. Let's configure tpm2-abrmd"
+# ------------------
+# configure the tpm2-abmrd
+# ------------------
+sudo mkdir -p /etc/systemd/system/tpm2-abrmd.service.d/
+sudo tee /etc/systemd/system/tpm2-abrmd.service.d/mssim.conf <<-EOF
+[Unit]
+ConditionPathExistsGlob=
+Requires=ibmswtpm2.service
+After=ibmswtpm2.service
+
+[Service]
+ExecStart=
+ExecStart=/usr/local/sbin/tpm2-abrmd --tcti=mssim
+EOF
+
+sudo systemctl daemon-reload
+sudo systemctl restart tpm2-abrmd

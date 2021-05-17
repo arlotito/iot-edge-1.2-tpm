@@ -29,9 +29,8 @@ sudo mkdir -p /opt/tpm2-pkcs11
 # the `PYTHON_INTERPRETER` env var.
 #
 # export PYTHON_INTERPRETER=python3.7
-cd ~/src/tpm2-pkcs11/tools
-sudo ./tpm2_ptool init --primary-auth '1234' --path /opt/tpm2-pkcs11
-sudo ./tpm2_ptool addtoken --path /opt/tpm2-pkcs11 \
+sudo tpm2_ptool init --primary-auth '1234' --path /opt/tpm2-pkcs11
+sudo tpm2_ptool addtoken --path /opt/tpm2-pkcs11 \
         --sopin "so$PIN" --userpin "$PIN" \
         --label "$TOKEN" --pid '1'
 

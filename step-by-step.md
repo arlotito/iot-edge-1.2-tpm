@@ -9,6 +9,7 @@ Just follow these steps:
   - [4 - Install IoT Edge 1.2](#4---install-iot-edge-12)
   - [5 - Init the PKCS11 store](#5---init-the-pkcs11-store)
   - [6 - Configure IoT Edge](#6---configure-iot-edge)
+  - [Clean up and next steps](#clean-up-and-next-steps)
 
 Bonus:
 - [BONUS: Inspect the PKCS11 store](./bonus.md#inspect-the-pkcs11-store)
@@ -158,6 +159,12 @@ The '6-iot-edge-config.sh' script will create and apply a 'config.toml' based on
   ```
   > **_NOTE:_**  the token 'edge' with PIN '1234' is created in script [5-pkcs11-init](./scripts/5-pkcs11-init.sh)
 
+## Clean up and next steps
+```bash
+cd
+rm -rf src
+rm -rf iot-edge-1.2-tpm
+```
 
-[I deployed/performed all the steps, now what?](./README.md#i-deployedperformed-all-the-steps-now-what)
+I deployed/performed all the steps, [now what?](./README.md#i-deployedperformed-all-the-steps-now-what)
 

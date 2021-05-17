@@ -33,6 +33,11 @@ sudo mkdir /opt/tpm2-pkcs11
 make "-j$(nproc)"
 sudo make install
 
+# install tpm2-ptools
+cd ~/src/tpm2-pkcs11/tools
+sudo su
+pip3 install .
+
 # ------------------
 # install missing package
 # ------------------

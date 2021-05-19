@@ -16,10 +16,10 @@ runcmd:
   - ./0-1-fix-ubuntu-18.04.sh
   - ./1-1-download-libs.sh
   - ./1-2-build-tpm2-tss.sh
-  - ./1-3-build-tpm2-abmrd.sh
-  - ./1-4-build-tpm2-tools.sh
-  - ./1-5-build-tpm2-pkcs11.sh
-  - ./2-install-vtpm.sh
+  - ./1-3-build-tpm2-tools.sh
+  - ./1-4-build-tpm2-pkcs11.sh
+  - ./2-1-OPTIONAL-vtpm-install.sh
+  - ./2-2-build-tpm2-abmrd.sh
   - ./3-install-pkcs11-tool.sh
   - ./4-install-edge-x86.sh
   - ./5-pkcs11-init.sh

@@ -13,7 +13,15 @@ cd ~/src/tpm2-tss
     --with-udevrulesprefix=70-
 make "-j$(nproc)"
 sudo make install
-id -u tss || sudo useradd --system --user-group tss
+
+# add tss if does not exist
+if id "tss" &>/dev/null; then
+    echo "user tss already exists"
+else
+    echo "adding user tss"
+    sudo useradd --system --user-group tss
+fi
+
 sudo udevadm control --reload-rules
 sudo udevadm trigger
 sudo ldconfig

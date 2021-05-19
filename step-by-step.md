@@ -9,6 +9,7 @@ Just follow these steps:
   - [4 - Install IoT Edge 1.2](#4---install-iot-edge-12)
   - [5 - Init the PKCS11 store](#5---init-the-pkcs11-store)
   - [6 - Configure IoT Edge](#6---configure-iot-edge)
+  - [Clean up and next steps](#clean-up-and-next-steps)
 
 Bonus:
 - [BONUS: Inspect the PKCS11 store](./bonus.md#inspect-the-pkcs11-store)
@@ -37,9 +38,8 @@ Execute all the 1-x scripts, one-by-one, as follows:
 ```bash
 ./1-1-download-libs.sh
 ./1-2-build-tpm2-tss.sh
-./1-3-build-tpm2-abmrd.sh
-./1-4-build-tpm2-tools.sh
-./1-5-build-tpm2-pkcs11.sh
+./1-3-build-tpm2-tools.sh
+./1-4-build-tpm2-pkcs11.sh
 ```
 
 ## 2 - Install and configure a SW or HW TPM 
@@ -47,10 +47,13 @@ You can use either an SW (i.e. simulated) TPM or a real HW TPM 2.0, without any 
 
 * **Simulated TPM**
   
-  To install the simulated TPM, just launch this script and proceed to step 3.
+  To install the simulated TPM and the broker:
   ```bash
-  ./2-install-vtpm.sh
+  ./2-1-OPTIONAL-vtpm-install.sh
+  ./2-2-build-tpm2-abmrd.sh
   ```
+
+  You can now proceed to step 3.
 
 * **Hardware TPM**
   
@@ -73,9 +76,11 @@ You can use either an SW (i.e. simulated) TPM or a real HW TPM 2.0, without any 
       ```
       and you should see /dev/tpm0 and /dev/tpmrm0 will appear in yellow letters!
 
-      ![picture 2](images/0ef44f532742028c06d69049cd23a93e99d50376c352cb026ee12f0f473e97de.png)  
-
-
+      ![picture 2](images/0ef44f532742028c06d69049cd23a93e99d50376c352cb026ee12f0f473e97de.png)
+  7. install the TPM2 broker:
+      ```bash
+      ./2-2-build-tpm2-abmrd.sh
+      ```
 
 ## 3 - pkcs11-tool installation
 To install pkcs11-tool:
@@ -158,6 +163,12 @@ The '6-iot-edge-config.sh' script will create and apply a 'config.toml' based on
   ```
   > **_NOTE:_**  the token 'edge' with PIN '1234' is created in script [5-pkcs11-init](./scripts/5-pkcs11-init.sh)
 
+## Clean up and next steps
+```bash
+cd
+rm -rf src
+rm -rf iot-edge-1.2-tpm
+```
 
-[I deployed/performed all the steps, now what?](./README.md#i-deployedperformed-all-the-steps-now-what)
+I deployed/performed all the steps, [now what?](./README.md#i-deployedperformed-all-the-steps-now-what)
 

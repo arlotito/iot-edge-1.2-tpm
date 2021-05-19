@@ -42,3 +42,7 @@ sudo apt install python3-pip -y
 # install cffi
 pip3 install -U cffi
 
+# install tpm2-ptools
+cd ~/src/tpm2-pkcs11/tools
+sudo pip3 install .
+

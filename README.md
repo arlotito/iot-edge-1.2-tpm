@@ -64,7 +64,7 @@ This guide has been tested on:
 ## References  
 
 - [A lightweight PKI based on Azure KeyVault with an EST Endpoint](https://github.com/vslepakov/keyvault-ca)
-- [GlobalSign EST server](https://github.com/globalsign/est/)
+- [GlobalSign EST server](https://github.com/arlotito/est)
 - [Cisco libest EST server](https://github.com/cisco/libest)
 - [The blueprint to securely solve the elusive zero-touch provisioning of IoT devices at scale](https://azure.microsoft.com/en-us/blog/the-blueprint-to-securely-solve-the-elusive-zerotouch-provisioning-of-iot-devices-at-scale/)
 - [TPM JS](https://google.github.io/tpm-js/)

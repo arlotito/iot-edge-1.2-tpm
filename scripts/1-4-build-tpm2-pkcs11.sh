@@ -8,8 +8,10 @@ sudo apt install libsqlite3-dev libyaml-dev python3.7-dev libffi-dev -y
 
 # https://github.com/tpm2-software/tpm2-pkcs11/blob/master/docs/INSTALL.md
 
-#VERSION=1.6.0
-VERSION=1.7.0
+VERSION=1.6.0
+#VERSION=1.7.0
+#1.7.0 gives the following error:
+#ModuleNotFoundError: No module named 'setuptools_rust'
 
 cd $HOME
 git clone https://github.com/tpm2-software/tpm2-pkcs11.git

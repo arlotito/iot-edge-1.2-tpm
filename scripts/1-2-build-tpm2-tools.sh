@@ -6,10 +6,16 @@ set -euo pipefail
 
 sudo apt -y install uuid-dev
 
+#VERSION=4.3.2
+VERSION=5.2
+
 cd $HOME
-wget https://github.com/tpm2-software/tpm2-tools/archive/refs/tags/4.3.2.tar.gz
-tar xvzf 4.3.2.tar.gz -C $HOME
-cd $HOME/tpm2-tools-4.3.2
+git clone https://github.com/tpm2-software/tpm2-tools.git
+cd $HOME/tpm2-tools
+git fetch --all --prune
+git clean -xffd
+git reset --hard
+git checkout "${VERSION}"
 
 ./bootstrap
 
@@ -17,3 +23,6 @@ cd $HOME/tpm2-tools-4.3.2
 
 make "-j$(nproc)"
 sudo make install
+
+# remove source code
+rm -rf $HOME/tpm2-tools

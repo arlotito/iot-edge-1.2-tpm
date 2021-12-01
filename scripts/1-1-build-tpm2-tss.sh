@@ -30,10 +30,15 @@ sudo apt -y install \
 # raspberry
 sudo apt install acl -y
 
+VERSION=3.1.0
+
 cd $HOME
-wget https://github.com/tpm2-software/tpm2-tss/archive/refs/tags/3.1.0.tar.gz 
-tar xvzf 3.1.0.tar.gz -C $HOME
-cd $HOME/tpm2-tss-3.1.0
+git clone https://github.com/tpm2-software/tpm2-tss.git
+cd $HOME/tpm2-tss
+git fetch --all --prune
+git clean -xffd
+git reset --hard
+git checkout "${VERSION}"
 
 ./bootstrap
 
@@ -54,3 +59,6 @@ fi
 
 sudo udevadm control --reload-rules && sudo udevadm trigger
 sudo ldconfig
+
+# remove source code
+rm -rf $HOME/tpm2-tss

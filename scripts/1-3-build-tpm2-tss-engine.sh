@@ -1,14 +1,19 @@
 #!/bin/bash
 # ------------------
-# build tpm2-tools
+# build tpm2-tss-engine
 # ------------------
 
 # https://github.com/tpm2-software/tpm2-tss-engine/blob/master/INSTALL.md
 
+VERSION=v1.1.0
+
 cd $HOME
-wget https://github.com/tpm2-software/tpm2-tss-engine/archive/refs/tags/v1.1.0.tar.gz
-tar xvzf v1.1.0.tar.gz -C $HOME
-cd $HOME/tpm2-tss-engine-1.1.0
+git clone https://github.com/tpm2-software/tpm2-tss-engine.git
+cd $HOME/tpm2-tss-engine
+git fetch --all --prune
+git clean -xffd
+git reset --hard
+git checkout "${VERSION}"
 
 ./bootstrap
 
@@ -16,3 +21,6 @@ cd $HOME/tpm2-tss-engine-1.1.0
 
 make "-j$(nproc)"
 sudo make install
+
+# remove source code
+rm -rf $HOME/tpm2-tss-engine

@@ -13,19 +13,19 @@ mkdir -p ~/src
 cd ~/src
 
 curl -L \
-    -o ibmtpm1637.tar.gz \
-    'https://sourceforge.net/projects/ibmswtpm2/files/ibmtpm1637.tar.gz'
-tar x --one-top-level=ibmtpm1637 -f ibmtpm1637.tar.gz
-cd ibmtpm1637/
+    -o ibmtpm.tar.gz \
+    'https://sourceforge.net/projects/ibmswtpm2/files/ibmtpm1661.tar.gz'
+tar x --one-top-level=ibmtpm -f ibmtpm.tar.gz
+cd ibmtpm/
 
 
 # ------------------
-# apply security patches
+# apply security patches - needed for ibmtpm1637
 # ------------------
-cp ~/iot-edge-1.2-tpm/scripts/ibm-vtpm-patches/* ~/src/ibmtpm1637
-patch -p1 -i ./makefile.patch
-patch -p1 -i ./ibmswtpm2-TcpServerPosix-Fix-use-of-uninitialized-value.patch
-patch -p1 -i ./ibmswtpm2-NVDynamic-Fix-use-of-uninitialized-value.patch
+# cp ~/iot-edge-1.2-tpm/scripts/ibm-vtpm-patches/* ~/src/ibmtpm1637
+# patch -p1 -i ./makefile.patch
+# patch -p1 -i ./ibmswtpm2-TcpServerPosix-Fix-use-of-uninitialized-value.patch
+# patch -p1 -i ./ibmswtpm2-NVDynamic-Fix-use-of-uninitialized-value.patch
 
 
 # ------------------
@@ -53,4 +53,6 @@ User=tss
 EOF
 sudo systemctl daemon-reload
 sudo systemctl start ibmswtpm2
+
+rm -rf ~/src/ibmtpm
 

@@ -8,10 +8,16 @@ sudo apt install libsqlite3-dev libyaml-dev python3.7-dev libffi-dev -y
 
 # https://github.com/tpm2-software/tpm2-pkcs11/blob/master/docs/INSTALL.md
 
+VERSION=1.6.0
+#VERSION=1.7.0
+
 cd $HOME
-wget https://github.com/tpm2-software/tpm2-pkcs11/archive/refs/tags/1.6.0.tar.gz
-tar xvzf 1.6.0.tar.gz -C $HOME
-cd $HOME/tpm2-pkcs11-1.6.0
+git clone https://github.com/tpm2-software/tpm2-pkcs11.git
+cd $HOME/tpm2-pkcs11
+git fetch --all --prune
+git clean -xffd
+git reset --hard
+git checkout "${VERSION}"
 
 
 # removes /opt/tpm2-pkcs11 if any
@@ -48,6 +54,9 @@ sudo apt install python3-pip -y
 pip3 install -U cffi
 
 # install tpm2-ptools
-cd $HOME/tpm2-pkcs11-1.6.0/tools
+cd $HOME/tpm2-pkcs11/tools
 sudo pip3 install .
+
+# remove source code
+rm -rf $HOME/tpm2-pkcs11
 

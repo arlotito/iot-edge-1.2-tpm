@@ -36,9 +36,8 @@ To install Python 3.7 (and fix apt, that may get corrupted):
 ## 1 - Install tpm2 software and PKCS11
 Execute all the 1-x scripts, one-by-one, as follows:
 ```bash
-./1-1-download-libs.sh        
-./1-2-build-tpm2-tss.sh       
-./1-3-build-tpm2-tools.sh     
+./1-1-build-tpm2-tss.sh       
+./1-2-build-tpm2-tools.sh     
 ./1-3-build-tpm2-tss-engine.sh
 ./1-4-build-tpm2-pkcs11.sh    
 ```

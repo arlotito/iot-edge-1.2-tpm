@@ -4,7 +4,7 @@
 # ------------------
 
 
-sudo apt install libsqlite3-dev libyaml-dev -y
+sudo apt install libsqlite3-dev libyaml-dev python3.7-dev libffi-dev -y
 
 # https://github.com/tpm2-software/tpm2-pkcs11/blob/master/docs/INSTALL.md
 

@@ -2,12 +2,17 @@
 # ------------------
 # build tpm2-pkcs11
 # ------------------
-set -euo pipefail
 
-cd ~/src/tpm2-pkcs11
 
-# needed in case previous steps have been skipped
-sudo apt-get update
+sudo apt install libsqlite3-dev libyaml-dev -y
+
+# https://github.com/tpm2-software/tpm2-pkcs11/blob/master/docs/INSTALL.md
+
+cd $HOME
+wget https://github.com/tpm2-software/tpm2-pkcs11/archive/refs/tags/1.6.0.tar.gz
+tar xvzf 1.6.0.tar.gz -C $HOME
+cd $HOME/tpm2-pkcs11-1.6.0
+
 
 # removes /opt/tpm2-pkcs11 if any
 sudo rm -rf /opt/tpm2-pkcs11
@@ -43,6 +48,6 @@ sudo apt install python3-pip -y
 pip3 install -U cffi
 
 # install tpm2-ptools
-cd ~/src/tpm2-pkcs11/tools
+cd $HOME/tpm2-pkcs11-1.6.0/tools
 sudo pip3 install .
 

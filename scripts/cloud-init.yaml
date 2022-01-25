@@ -14,9 +14,9 @@ runcmd:
   - sed -i.bak 's/\r$//g' *.sh
   # Install TPM tools, vTPM and IoT Edge
   - ./0-1-fix-ubuntu-18.04.sh
-  - ./1-1-download-libs.sh
-  - ./1-2-build-tpm2-tss.sh
-  - ./1-3-build-tpm2-tools.sh
+  - ./1-1-build-tpm2-tss.sh
+  - ./1-2-build-tpm2-tools.sh
+  - ./1-3-build-tpm2-tss-engine.sh
   - ./1-4-build-tpm2-pkcs11.sh
   - ./2-1-OPTIONAL-vtpm-install.sh
   - ./2-2-build-tpm2-abmrd.sh

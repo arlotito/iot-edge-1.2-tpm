@@ -4,7 +4,12 @@
 # ------------------
 set -euo pipefail
 
-cd ~/src/tpm2-abrmd
+sudo apt-get install libglib2.0-dev -y
+
+cd $HOME
+wget https://github.com/tpm2-software/tpm2-abrmd/archive/refs/tags/2.4.0.tar.gz
+tar xvzf 2.4.0.tar.gz -C $HOME
+cd $HOME/tpm2-abrmd-2.4.0
 
 ./bootstrap
 
@@ -13,9 +18,12 @@ cd ~/src/tpm2-abrmd
     --with-systemdsystemunitdir=/lib/systemd/system \
     --with-systemdpresetdir=/lib/systemd/system-preset \
     --datarootdir=/usr/share
+
 make "-j$(nproc)"
 sudo make install
+
 sudo ldconfig
+
 sudo pkill -HUP dbus-daemon
 sudo systemctl daemon-reload
 sudo systemctl enable tpm2-abrmd.service

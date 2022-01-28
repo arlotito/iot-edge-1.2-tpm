@@ -18,16 +18,6 @@ curl -L \
 tar x --one-top-level=ibmtpm -f ibmtpm.tar.gz
 cd ibmtpm/
 
-
-# ------------------
-# apply security patches - needed for ibmtpm1637
-# ------------------
-# cp ~/iot-edge-1.2-tpm/scripts/ibm-vtpm-patches/* ~/src/ibmtpm1637
-# patch -p1 -i ./makefile.patch
-# patch -p1 -i ./ibmswtpm2-TcpServerPosix-Fix-use-of-uninitialized-value.patch
-# patch -p1 -i ./ibmswtpm2-NVDynamic-Fix-use-of-uninitialized-value.patch
-
-
 # ------------------
 # build and install
 # ------------------

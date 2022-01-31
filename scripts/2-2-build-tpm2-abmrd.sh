@@ -6,10 +6,15 @@ set -euo pipefail
 
 sudo apt-get install libglib2.0-dev -y
 
+VERSION=2.4.0
+
 cd $HOME
-wget https://github.com/tpm2-software/tpm2-abrmd/archive/refs/tags/2.4.0.tar.gz
-tar xvzf 2.4.0.tar.gz -C $HOME
-cd $HOME/tpm2-abrmd-2.4.0
+git clone https://github.com/tpm2-software/tpm2-abrmd.git
+cd $HOME/tpm2-abrmd
+git fetch --all --prune
+git clean -xffd
+git reset --hard
+git checkout "${VERSION}"
 
 ./bootstrap
 
